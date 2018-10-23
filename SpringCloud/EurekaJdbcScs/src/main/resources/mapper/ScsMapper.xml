@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.EurekaJdbcScs.dao.ScsDao">
+	<resultMap id="BaseResultMap" type="com.EurekaJdbcScs.domain.Scs">
+		<result column="vender_id" property="vender_id" />
+		<result column="invoice_amt" property="invoice_amt" />
+		<result column="k_amt" property="k_amt" />
+		<result column="plan_pay_interval" property="plan_pay_interval" />
+		<result column="update_time" property="update_time" />
+		<result column="exp_date" property="exp_date" />
+	</resultMap>
+
+	<parameterMap id="Scs" type="com.EurekaJdbcScs.domain.Scs"/>
+
+	<sql id="Base_Column_List">
+		vender_id, acc_date, invoice_amt, k_amt, plan_pay_interval, update_time, exp_date
+	</sql>
+
+	<select id="findById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		<!-- 
+		select
+		<include refid="Base_Column_List" />
+		from t_olyf_sc_vender_payable
+		where vender_id = #{scsId}		
+		ORDER BY update_time 
+		DESC LIMIT 5
+		-->
+		select
+		*
+		from renting_payment
+		where valid_flag=1 and available_flag=1						
+	</select>
+
+</mapper>

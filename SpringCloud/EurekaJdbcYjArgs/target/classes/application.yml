@@ -1,0 +1,27 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+    instance:       
+        status-page-url: http://${eureka.instance.hostname:localhost}:${management.port:${MANAGEMENT_PORT:8907}}${management.context-path:${MANAGEMENT_CONTEXTPATH:}}${endpoints.info.path:/api/yj/}
+
+            
+            
+server:
+    port: 8907
+spring:
+    application:
+        name: EurekaJdbcYjArgs
+    datasource:
+        url: jdbc:mysql://192.168.1.201:3306/long_rent?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: qazwsx123
+        driver-class-name: com.mysql.jdbc.Driver
+        
+## Mybatis 配置
+mybatis:
+    typeAliasesPackage: com.EurekaJdbcYj
+    mapperLocations: classpath:mapper/*.xml
+    
+
+        

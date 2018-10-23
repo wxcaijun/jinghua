@@ -1,0 +1,23 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+server:
+    port: 8906
+spring:
+    application:
+        name: EurekaJdbcScs
+    datasource:
+        ##url: jdbc:mysql://10.1.130.11:5432/olyf_jhdb?useUnicode=true&characterEncoding=utf-8
+        ##username: olyf
+        ##password: olyf
+        url: jdbc:mysql://192.168.1.201:3306/long_rent?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: qazwsx123
+        driver-class-name: com.mysql.jdbc.Driver
+        
+## Mybatis 配置
+mybatis:
+    typeAliasesPackage: com.EurekaJdbcCity
+    mapperLocations: classpath:mapper/*.xml
+        

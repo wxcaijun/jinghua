@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.EurekaJdbcYjArgs.dao.YjDao">
+	<resultMap id="BaseResultMap" type="com.EurekaJdbcYjArgs.domain.Yj">
+		<result column="pay_id" property="pay_id" />
+		<result column="housing_add" property="housing_add" />
+		<result column="planpay_date" property="planpay_date" />
+		<result column="pay_amount" property="pay_amount" />
+		<result column="valid_flag" property="valid_flag" />
+		<result column="available_flag" property="available_flag" />
+		<result column="factoring_flag" property="factoring_flag" />
+	</resultMap>
+
+	<parameterMap id="Yj" type="com.EurekaJdbcYjArgs.domain.Yj"/>
+
+	<sql id="Base_Column_List">
+		pay_id, housing_add, planpay_date, pay_amount, valid_flag, available_flag, factoring_flag
+	</sql>
+
+	<select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from renting_payment
+		<!-- where #{valid_flag} and available_flag = 1 -->
+		where #{valid_flag} = 1 and available_flag = 1
+	</select>
+
+</mapper>
